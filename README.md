@@ -1,6 +1,2 @@
 # firstproject
-This is my first project.
-
-
-
-# StudentManagement
+First Project: StudentManagement
