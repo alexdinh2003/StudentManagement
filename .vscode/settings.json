@@ -1,0 +1,28 @@
+{
+    "java.debug.settings.onBuildFailureProceed": true,
+    "java.dependency.packagePresentation": "flat",
+    "editor.formatOnPaste": true,
+    "problems.decorations.enabled": false,
+    "problems.showCurrentInStatus": true,
+    "problems.defaultViewMode": "tree",
+    "problems.autoReveal": true,
+    "java.project.sourcePaths": [
+        "Project_Summer22\\Fall2022CS2022\\Demo\\JFrame",
+        "Project_Summer22\\Fall2022CS2022\\Demo\\Recursion",
+        "Project_Summer22\\Fall2022CS2022\\HW\\hw2",
+        "Project_Summer22\\Fall2022CS2022\\HW\\hw3",
+        "Project_Summer22\\Fall2022CS2022\\HW\\hw4",
+        "Project_Summer22\\Fall2022CS2022\\HW\\hw5",
+        "Project_Summer22\\Fall2022CS2022\\Lab\\11",
+        "Project_Summer22\\Fall2022CS2022\\Lab\\12",
+        "Project_Summer22\\Fall2022CS2022\\Lab\\13",
+        "Project_Summer22\\Project 1\\JavaLearning",
+        "Project_Summer22\\Project_Summer22\\JavaLearning",
+        "Project_Summer22\\Project1\\JavaLearning",
+        "StudentManagement"
+    ],
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "d:\\SQL\\SQL connector\\mysql-connector-java-8.0.29\\mysql-connector-java-8.0.29.jar"
+    ]
+}

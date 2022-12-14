@@ -1,0 +1,7 @@
+{
+    "java.dependency.packagePresentation": "hierarchical",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "d:\\Eclipse_Workspace\\LeetCodeExample\\mysql-connector-java-8.0.29.jar"
+    ]
+}
