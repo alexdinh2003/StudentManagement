@@ -148,13 +148,14 @@ public class MainPage implements ActionListener {
         lblLastName = new JLabel("Last Name");
         lblLastName.setFont(mainFont2);
         lblLastName.setForeground(Color.WHITE);
-        lblLastName.setBounds(10, 429, 103, 20);
+        lblLastName.setBounds(326, 385, 103, 20);
         frame.getContentPane().add(lblLastName);
 
+        // (10, 429, 103, 20);
         lblClass = new JLabel("Class");
         lblClass.setFont(mainFont2);
         lblClass.setForeground(Color.WHITE);
-        lblClass.setBounds(342, 385, 103, 20);
+        lblClass.setBounds(10, 429, 103, 20);
         frame.getContentPane().add(lblClass);
 
         lblFinalGrade = new JLabel("Final Grade");
