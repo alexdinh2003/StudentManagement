@@ -2,6 +2,7 @@
 
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Image;
@@ -37,6 +38,7 @@ public class GUI_Department extends JFrame implements ActionListener, KeyListene
 
 	public void welcomePage() {
 		this.setTitle("Technology Department");
+	    this.setResizable(false);
 		/*
 		 * this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// exit out of
 		 * application, hide = kill the application //this.setResizable(false);//
@@ -48,7 +50,7 @@ public class GUI_Department extends JFrame implements ActionListener, KeyListene
 																										// icon
 			image2 = new ImageIcon(
 					new ImageIcon("images\\welcomelogo.jpg").getImage()
-							.getScaledInstance(75, 75, Image.SCALE_DEFAULT));
+							.getScaledInstance(300, 200, Image.SCALE_DEFAULT));
 
 			this.setIconImage(image.getImage());// change icon of this
 			//this.setIconImage(image2.getImage());
@@ -62,11 +64,14 @@ public class GUI_Department extends JFrame implements ActionListener, KeyListene
 		labelWelcome = new JLabel();
 		labelWelcome.setText("Welcome to our department!");
 		labelWelcome.setSize(70, 30);
-		//labelWelcome2.setIcon(new ImageIcon("image2"));
+		labelWelcome.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		
 		//labelWelcome.setIcon(image);
-		labelWelcome2 = new JLabel();
+		labelWelcome2 = new JLabel(image2, JLabel.CENTER);
 		labelWelcome2.setIcon(image2);
-		//labelWelcome2.setHorizontalTextPosition(JLabel.CENTER);
+		
+		
+		labelWelcome2.setHorizontalTextPosition(JLabel.RIGHT);
 		//labelWelcome2.setVerticalTextPosition(JLabel.BOTTOM);
 		
 		labelWelcome2.setForeground(new Color(0x00FF00));
@@ -100,8 +105,8 @@ public class GUI_Department extends JFrame implements ActionListener, KeyListene
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// exit out of application, hide = kill the application
 		// this.setResizable(false);// prevent this from being resized
-		this.setSize(490, 490);
-		this.setBounds(450, 190, 1014, 597 ); //450, 190, 1014, 597 //10, 10, 370, 600
+		this.setSize(460, 540);
+		//this.setBounds(450, 190, 1014, 597 ); //450, 190, 1014, 597 //10, 10, 370, 600
 		this.setVisible(true);
 
 		
