@@ -37,7 +37,7 @@ public class MainPage implements ActionListener {
     //final private Font mainFront = new Font("Segoe print", Font.BOLD, 20);
     //private static final String Font = null;
 
-    private static JTextField textFirstName, textLastName, textGrade, textFinalGrade;
+    private static JTextField textStudentID, textFirstName, textLastName, textGrade, textFinalGrade;
     public static void main(String[] args){
         //MangagePage();
     }
@@ -89,7 +89,7 @@ public class MainPage implements ActionListener {
 
         //Create a table 
         table = new JTable();
-        Object[] cols = {"First Name", "Last Name", "Class", "Final Grade"};
+        Object[] cols = {"Student ID", "First Name", "Last Name", "Class", "Final Grade"};
         DefaultTableModel model = new DefaultTableModel();
         frame.getContentPane().setBackground(new Color(0, 0, 0));                
         frame.getContentPane().setForeground(Color.WHITE);
@@ -100,6 +100,7 @@ public class MainPage implements ActionListener {
 
         model.setColumnIdentifiers(cols);
         table.setModel(model);
+        
 
         table.setBackground(Color.WHITE);
         table.setForeground(Color.BLACK);
@@ -116,7 +117,13 @@ public class MainPage implements ActionListener {
         pane.setBounds(10,10,593,354);
         frame.getContentPane().add(pane);
 
-        // Text First, Last Name, grade = class, final grade
+        // Student ID, Text First, Last Name, grade = class, final grade
+        textStudentID = new JTextField();
+        textStudentID.setBounds(121, 374, 184, 35);
+        textStudentID.setBackground(Color.WHITE);
+        frame.getContentPane().add(textStudentID);
+        textStudentID.setColumns(10);
+
         textFirstName = new JTextField();
         textFirstName.setBounds(121, 374, 184, 35);
         textFirstName.setBackground(Color.WHITE);
