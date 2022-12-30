@@ -300,7 +300,7 @@ public class MainDepartment extends JFrame implements ActionListener {
 			}
 
 			String query = "SELECT * FROM gradekeeper";
-			Object[] row = new Object[4];
+			Object[] row = new Object[5];
 
 			// connection
 			Connection conn = getConnection();
@@ -308,15 +308,18 @@ public class MainDepartment extends JFrame implements ActionListener {
 			ResultSet rs = sta.executeQuery(query);
 
 			while(rs.next()){
-				System.out.print(rs.getString(1)); 
+				System.out.print(rs.getString(5));
+				System.out.print("\t" + rs.getString(1)); 
 				System.out.print("\t" + rs.getString(2));
 				System.out.print("\t" + rs.getInt(3));
 				System.out.println("\t" + rs.getInt(4));
 
-				row[0] =  rs.getString(1);
-				row[1] =  rs.getString(2);
-				row[2] =  rs.getInt(3);
-				row[3] =  rs.getInt(4);
+				row[0] =  rs.getString("StudentID");
+				row[1] =  rs.getString(1);
+				row[2] =  rs.getString(2);
+				row[3] =  rs.getInt(3);
+				row[4] = rs.getInt(4);
+
 
 				model.addRow(row);
 			}
