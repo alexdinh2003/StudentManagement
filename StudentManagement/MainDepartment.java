@@ -215,7 +215,7 @@ public class MainDepartment extends JFrame implements ActionListener {
 				conn.close(); 
 
 				
-				GUI_Department back = new GUI_Department();
+				Login back = new Login();
 				back.welcomePage();
 				back.UserLogin();
 
@@ -239,7 +239,7 @@ public class MainDepartment extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				frame.setVisible(false);
-            	GUI_Department back = new GUI_Department();
+            	Login back = new Login();
             	back.welcomePage();
             	back.UserLogin();
 			}
@@ -255,9 +255,9 @@ public class MainDepartment extends JFrame implements ActionListener {
 		
 	}
 
-	public boolean insertGradeKeeper(String fn, String ln, int cls, int grade) {
+	public boolean insertGradeKeeper(String fn, String ln, int cls, int grade, String stdid) throws SQLException {
 
-		String insert = "INSERT INTO gradekeeper(FirstName, LastName, class, FinalGrade) VALUES(?, ?, ?, ?)";
+		String insert = "INSERT INTO gradekeeper(FirstName, LastName, class, FinalGrade, StudentID) VALUES(?, ?, ?, ?, ?)";
 
 		// 1. Open the connection
 		try (Connection conn = getConnection();) {
@@ -268,6 +268,7 @@ public class MainDepartment extends JFrame implements ActionListener {
 			ps.setString(2, ln);
 			ps.setInt(3, cls);
 			ps.setInt(4, grade);
+			ps.setString(5, stdid);
 
 			int status = ps.executeUpdate();
 
@@ -281,6 +282,41 @@ public class MainDepartment extends JFrame implements ActionListener {
 
 			// For sure, after using we have to close the connection explicitly! what if we
 							// dont close?
+			// The number of connections will be reached to max #
+			// at that time, no one can make more connection to database server!
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw e;
+		}
+
+		return false;
+	}
+
+	public boolean deleteGradeKeeper(String stdid) {
+
+		String delete = "DELETE FROM gradekeeper WHERE StudentID = ?";
+
+		// 1. Open the connection
+		try (Connection conn = getConnection();) {
+
+			// 2. Create a prepstatement using connection object
+			PreparedStatement ps = conn.prepareStatement(delete);
+			
+			ps.setString(1, stdid);
+
+			int status = ps.executeUpdate();
+
+			conn.close();
+
+			if (status != 0) {
+
+				System.out.println("DELETE SUCESSFULLY!");
+				return true;
+			}
+
+			// For sure, after using we have to close the connection explicitly! what if we
+			// dont close?
 			// The number of connections will be reached to max #
 			// at that time, no one can make more connection to database server!
 
@@ -308,18 +344,18 @@ public class MainDepartment extends JFrame implements ActionListener {
 			ResultSet rs = sta.executeQuery(query);
 
 			while(rs.next()){
-				System.out.print(rs.getString(5));
-				System.out.print("\t" + rs.getString(1)); 
+				
+				System.out.print(rs.getString(1)); 
 				System.out.print("\t" + rs.getString(2));
 				System.out.print("\t" + rs.getInt(3));
-				System.out.println("\t" + rs.getInt(4));
+				System.out.print("\t" + rs.getInt(4));
+				System.out.println("\t" + rs.getString(5));
 
-				row[0] =  rs.getString("StudentID");
-				row[1] =  rs.getString(1);
-				row[2] =  rs.getString(2);
-				row[3] =  rs.getInt(3);
-				row[4] = rs.getInt(4);
-
+				row[0] =  rs.getString(1);
+				row[1] =  rs.getString(2);
+				row[2] =  rs.getInt(3);
+				row[3] = rs.getInt(4);
+				row[4] = rs.getString("StudentID");
 
 				model.addRow(row);
 			}
@@ -328,8 +364,32 @@ public class MainDepartment extends JFrame implements ActionListener {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		
+	}
+	
+	public boolean IsExistingStudentID(String stuID) {
+		String query = "SELECT * FROM gradekeeper WHERE StudentID = ? ";
+		try (Connection conn = getConnection();){
+			
+			// connection
+			
+			PreparedStatement ps = conn.prepareStatement(query);
+			
+			ps.setString(1, stuID);
+
+			ResultSet rs = ps.executeQuery();
+			boolean flag = rs.next();	
+
+			conn.close();
+			return flag;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+
+		}
 
 		
+
 	}
 
 	//UPDATE FIRST NAME
@@ -387,7 +447,7 @@ public class MainDepartment extends JFrame implements ActionListener {
 		System.out.println("Current path is:: " + currentPath);
 		
 		long start = System.nanoTime();
-		GUI_Department myFrame = new GUI_Department();
+		Login myFrame = new Login();
 		myFrame.welcomePage();
 		myFrame.UserLogin();
 		//new temp();
